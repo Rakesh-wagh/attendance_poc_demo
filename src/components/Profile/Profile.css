@@ -1,0 +1,36 @@
+.App {
+  width: 30rem;
+  margin: 5rem auto;
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.profile-field {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input,
+span {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  display: block;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+}
