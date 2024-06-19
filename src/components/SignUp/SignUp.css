@@ -4,21 +4,17 @@
   gap: 10px;
   width: 30rem;
 }
-
 .signup-form div {
   display: grid;
   gap: 5px;
 }
-
 .signup-form div.inline {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-
 .signup-form label {
   font-weight: bold;
 }
-
 .signup-form input,
 .signup-form select {
   padding: 8px;
@@ -26,7 +22,6 @@
   border-radius: 3px;
   width: 100%;
 }
-
 .signup-form button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
@@ -40,8 +35,7 @@
 .signup-links {
   margin-top: 20px;
 }
-
 .signup-links a {
   color: #007bff;
   text-decoration: none;
-}
+}/*# sourceMappingURL=SignUp.css.map */

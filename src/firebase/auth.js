@@ -82,9 +82,11 @@ export const fetchUserById = async (userId) => {
       userRef,
       (snapshot) => {
         const userData = snapshot.val();
+        console.log("User data fetched:", userData);
         if (userData) {
           resolve(userData);
         } else {
+          console.log("No user data found for this ID");
           resolve(null);
         }
       },

@@ -7,41 +7,57 @@ import "./SignUp.css";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [empid, setEmpid] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
+    empid: "",
+  });
   const [uid, setuId] = useState("");
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
+    const { password, confirmPassword } = formData;
+
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
       return;
     }
+
     if (!isSigningUp) {
       setIsSigningUp(true);
       try {
-        await doCreateUserWithEmailAndPassword(email, password);
+        await doCreateUserWithEmailAndPassword(
+          formData.email,
+          formData.password
+        );
         const user = auth.currentUser;
         setuId(user.uid);
-
-        // Save To Realtime Database
         if (user) {
           await set(ref(db, `Employee/${user.uid}`), {
             userId: user.uid,
-            name: name,
+            employeeId: formData.empid,
+            name: formData.name,
             email: user.email,
-            phoneNumber: phone,
+            phoneNumber: formData.phone,
             createdAt: new Date().toISOString(),
           });
         }
         setIsSuccess(true);
+        navigate(`/profile/${user.uid}`);
       } catch (error) {
         setErrorMessage(error.message);
         setIsSigningUp(false);
@@ -57,8 +73,9 @@ const SignUp = () => {
           <label>User Id:</label>
           <input
             type="text"
-            value={empid}
-            onChange={(e) => setEmpid(e.target.value)}
+            name="empid"
+            value={formData.empid}
+            onChange={handleChange}
             required
           />
         </div>
@@ -66,8 +83,9 @@ const SignUp = () => {
           <label>Name:</label>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
             required
           />
         </div>
@@ -76,8 +94,9 @@ const SignUp = () => {
             <label>Email:</label>
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -85,8 +104,9 @@ const SignUp = () => {
             <label>Phone:</label>
             <input
               type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               required
             />
           </div>
@@ -96,8 +116,9 @@ const SignUp = () => {
             <label>Password:</label>
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
@@ -105,8 +126,9 @@ const SignUp = () => {
             <label>Confirm Password:</label>
             <input
               type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
               required
             />
           </div>

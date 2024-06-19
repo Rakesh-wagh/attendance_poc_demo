@@ -1,0 +1,47 @@
+.signup-form {
+  display: grid;
+  margin: 10rem auto;
+  gap: 10px;
+  width: 30rem;
+
+  div {
+    display: grid;
+    gap: 5px;
+
+    &.inline {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input,
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+  }
+
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.signup-links {
+  margin-top: 20px;
+
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+}

@@ -7,16 +7,18 @@
 .btn-primary {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid rgb(162, 180, 242);
+  border: 1px solid  rgb(162, 180, 242);
   border-radius: 0.25rem;
-  background-color: rgb(80, 80, 235);
+  background-color:rgb(80, 80, 235);
   color: #fff;
   display: block;
   cursor: pointer;
-}
-.btn-primary:hover {
-  background-color: rgb(83, 115, 233);
-  border: 1px solid rgb(80, 80, 235);
+
+  &:hover {
+    background-color:  rgb(83, 115, 233);
+    border: 1px solid  rgb(80, 80, 235);
+    
+  }
 }
 
 .btn-secondary {
@@ -28,12 +30,13 @@
   background-color: rgb(91, 154, 102);
   color: #fff;
   cursor: pointer;
-}
-.btn-secondary:hover {
-  background-color: rgb(18, 152, 40);
+
+  &:hover {
+    background-color: rgb(18, 152, 40);
+  }
 }
 
 .container {
   margin: 10px;
   height: 100vh;
-}/*# sourceMappingURL=App.css.map */
+}
